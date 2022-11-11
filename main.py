@@ -10,13 +10,18 @@ class Game():
         self.running = True
 
     def gameloop(self):
+        x = 10
         while self.running:
             for event in pygame.event.get():
                 self.state.handle_event(event)
             self.state.update()
             self.state.draw(self.screen)
+            pygame.display.flip()
             if self.state.done:
-                self.running = False
+                if self.state.next_screen:
+                    self.state = self.state.next_screen
+                else:
+                    self.running = False
 
 
 myGame = Game()
