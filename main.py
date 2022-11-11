@@ -10,7 +10,6 @@ class Game():
         self.running = True
 
     def gameloop(self):
-        x = 10
         while self.running:
             for event in pygame.event.get():
                 self.state.handle_event(event)
